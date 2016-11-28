@@ -5,18 +5,48 @@ Arduino Twinkle Lights in a Jar
 
 This project is an Arduino variant of the [Pimoroni Firefly Light](https://learn.pimoroni.com/tutorial/sandyj/firefly-light) project. I thought the project was cool, but they threw an awful lot of hardware into the solution, so I wanted to see if I could build something with less parts and for less money.
 
-Basically you place two strings of battery-powered LEDs into a glass jar and use an Arduino to fade one strand on while the other strand fades to off. This process repeats for as long as the Arduino has power. 
+Basically you place two strings of battery-powered LEDs into a glass jar and use an Arduino to fade one strand on while the other strand fades to off. This process repeats for as long as the Arduino has power.
+
+![Finished Project](images/figure-01.png)
+
+Here's a video of the project in action:
+
+<iframe src="https://player.vimeo.com/video/193441242" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/193441242">Arduino Twinkle Lights</a> from <a href="https://vimeo.com/user39135142">John Wargo</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
 ## Required Hardware
 
-+ Arduino Pro Trinket 3V
-+ Power thingie
-+ Battery
-+ Glass Jar
-+ 2 strings of LEDs
+Basically, all you need is an Arduino, battery, glass vessel and some battery-powered LEDs. The project (as I've implemented it) uses the following hardware: 
+
++ [Adafruit Pro Trinket - 3V 12MHz](https://www.adafruit.com/products/2010)
++ [Adafruit Pro Trinket LiIon/LiPoly Backpack Add-On](https://www.adafruit.com/products/2124)
++ [Lithium Ion Polymer Battery - 3.7v 500mAh](https://www.adafruit.com/products/1578)
++ Ikea [ENSIDIG Glass Jar](http://www.ikea.com/gb/en/products/decoration/vases-bowls/ensidig-vase-clear-glass-art-10239888/)
++ 2 of [Ikea SÄRDAL LED light chain with 12 lights](http://www.ikea.com/us/en/catalog/products/60277514/)
 
 ## Hardware Assembly
 
+1.	Solder the headers to the **Adafruit Pro Trinket LiIon/LiPoly Backpack Add-On**. 
+
+	> **Note:** If you want, connect a SPST switch to the board using the instructions available on [the board's product page](https://www.adafruit.com/products/2124).
+
+2.	Solder the Adafruit Pro Trinket LiIon/LiPoly Backpack Add-On onto the **Arduino Pro Trinket 3V**.  
+
+3.	Disassemble the **SÄRDAL LED light chain** units. Use a Philips screwdriver to remove the screws from the top and bottom of the battery case. The LED strand connects to a circuit board inside the battery case, make note of which wires are connected to the battery's positive (`+`) and negative (`-`) terminals. 
+
+4.	*Optional:* To protect the cirsuit, solder a small resistor (in my measurements, the existing battery pack includes a 2.5 Ohm resistor) to each strand's positive (`+`) wire. I grabbed some 47 Ohm resistors I had lying around to use for this. 
+	
+	> **Note:** To protect the circuit from shorting out, I added some shrink tubing over the soldered connection and resistor.  
+	
+5.	Solder the wires from the LED strands to the appropriate pins on the **Arduino Pro Trinket 3V**.
+
+	For each strand, solder the strand's negative (`-`) wire to the two `GROUND` pins in the lower-left corner of the figure. Solder each strand's positive (`+`) wire to pins `9` and `10` in the upper-left corner of the figure. Solder the wires from one strand to pin `9` and the wire from the other strand to pin `10`.  
+
+	![Adafruit Pro Trinket Pinouts](https://cdn-learn.adafruit.com/assets/assets/000/025/646/medium800/adafruit_products_pro5.png?1432753967)
+
+6.	Plug the **Lithium Ion Polymer Battery** to the Adafruit Pro Trinket LiIon/LiPoly Backpack Add-On.
+
+That's it, you're all connected. Connect the Trinket to your PC using a USB cable and download the project's compiled code into the device. You can find complete directions on how to setup your development environment and deploy compiled code to the Trinket in the [Trinket tutorial](https://learn.adafruit.com/introducing-pro-trinket/overview). The project's code is located in the `twinkle_lights.ino` file.
 
 ## Application Code
 
@@ -25,20 +55,20 @@ The application code starts with a few constant definitions:
 Use the `pin0` and `pin1` constants to tell the application which analog write pins the LED strand's positive wires are connected. For my implementation, I connected them to pins 9 and 10. If you use different pins, change the values in the following constants:
     
 	//Analog ouput pin assignments
-	int pin0 = 9;
-	int pin1 = 10;
+	const int pin0 = 9;
+	const int pin1 = 10;
 	
-As the lights fade up and down, the application uses the `delayVal` value to specify, in milliseconds, how long to wait between each change in voltage.
+As the lights fade up and down, the application uses the `delayVal` value to specify, in milliseconds, how long to wait between each change in voltage. Increase the value to the right of the equals sign to make the LEDs fade slower. Decrease the value to the right of the equals sign to make the LEDs fade faster. 
 
 	//Specifies how long the application delays between changes to output voltage
-	int delayVal = 20;  //in milliseconds
+	const int delayVal = 20;  //in milliseconds
 
 The applicaton uses several loops to control fading the LEDs. Rather than type the max loop counter in each loop, I defined a constant to use. Don't change this value, there's no need to that I can think of - I just used this to keep from having a number (255) repeated throughout the code.
 	
 	//Constant representing max analog output
-	int maxAnalog = 255;
+	const int maxAnalog = 255;
 
-This is some text.
+The `setup` function is where the Arduino sketch initializes its hardware and software parameters. For this project, we don't have to do much; since the LED strands alternate between fading up and down, we want to fade one of the strands to maximum brightness before we start repeating the process. So, in the `setup` function, the code simply fades the second strand (the one connected to `pin1`) up to max.
 
 	void setup() {
 	  //The setup function initializes the application
@@ -54,7 +84,7 @@ This is some text.
 	  delay(1000);
 	}
 
-This is some text.
+With the LED strands properly initialized, the `loop` function cycles one strand up to maximum power while cycling the other down to off. This process repeats until power is removed from the microcontroller. I added a 1 second delay at the top of the loop so the lights seem to pause before the process repeats.
 
 	void loop() {
 	  //Strand 0 up, strand 1 down
@@ -79,7 +109,6 @@ This is some text.
 	  delay(1000);
 	}
 
-and this is some end text.
 
 ***
 

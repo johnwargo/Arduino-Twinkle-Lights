@@ -9,14 +9,14 @@
  ************************************************************************/
 
 //Analog ouput pin assignments
-int pin0 = 9;
-int pin1 = 10;
+const int pin0 = 9;
+const int pin1 = 10;
 
 //Specifies how long the application delays between changes to output voltage
-int delayVal = 20;  //in milliseconds
+const int delayVal = 20;  //in milliseconds
 
 //Constant representing max analog output
-int maxAnalog = 255;
+const int maxAnalog = 255;
 
 void setup() {
   //The setup function initializes the application
