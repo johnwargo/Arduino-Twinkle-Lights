@@ -1,4 +1,4 @@
-/************************************************************************
+/*************************************************************************
 
     Arduino Twinkle Lights
     by John M. Wargo (www.johnwargo.com)
@@ -6,25 +6,30 @@
 
     This project is an Arduino variant of the Pimoroni Firefly Light
     (https://learn.pimoroni.com/tutorial/sandyj/firefly-light) project.
- ***********************************************************************/
+ ************************************************************************/
+
 //Analog ouput pin assignments
 int pin0 = 9;
 int pin1 = 10;
 
-//How long the application delays between changes to output voltage
-int delayVal = 50;
+//Specifies how long the application delays between changes to output voltage
+int delayVal = 50;  //in milliseconds
 
 //Constant representing max analog output
 int maxAnalog = 255;
 
 void setup() {
-  //start by winding strand 1 up to full illumination
+  //The setup function initializes the application
+  //In this case, we'll just start by winding strand 1 up to
+  //full illumination
   for (int i = 0; i < maxAnalog; i++) {
     //Write the voltage value
     analogWrite(pin1, i);
     //Pause for a little while
     delay(delayVal);
   }
+  //Wait a second before continuing 
+  delay(1000);
 }
 
 void loop() {
@@ -44,4 +49,6 @@ void loop() {
     //Pause for a little while
     delay(delayVal);
   }
+  //Wait a second before continuing 
+  delay(1000);
 }
