@@ -22,7 +22,7 @@ Basically, all you need is an Arduino, battery, glass vessel and some battery-po
 + [Adafruit Pro Trinket LiIon/LiPoly Backpack Add-On](https://www.adafruit.com/products/2124)
 + [Lithium Ion Polymer Battery - 3.7v 500mAh](https://www.adafruit.com/products/1578)
 + Ikea [ENSIDIG Glass Jar](http://www.ikea.com/gb/en/products/decoration/vases-bowls/ensidig-vase-clear-glass-art-10239888/)
-+ 2 of [Ikea SÄRDAL LED light chain with 12 lights](http://www.ikea.com/us/en/catalog/products/60277514/)
++ 2 of Ikea [SÄRDAL LED light chain with 12 lights](http://www.ikea.com/us/en/catalog/products/60277514/)
 
 ## Hardware Assembly
 
