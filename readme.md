@@ -26,17 +26,27 @@ Basically, all you need is an Arduino, battery, glass vessel and some battery-po
 
 ## Hardware Assembly
 
-1.	Solder the headers to the **Adafruit Pro Trinket LiIon/LiPoly Backpack Add-On**. 
+1.	Solder the included headers to the **Adafruit Pro Trinket LiIon/LiPoly Backpack Add-On**. 
+
+	![Soldered Headers](images/figure-02.png)
 
 	> **Note:** If you want, connect a SPST switch to the board using the instructions available on [the board's product page](https://www.adafruit.com/products/2124).
+	 
+	> ![Power Switch](images/figure-0#.png)
 
 2.	Solder the Adafruit Pro Trinket LiIon/LiPoly Backpack Add-On onto the **Arduino Pro Trinket 3V**.  
 
+	![Solder backpack to the Arduino device](images/figure-03.png)
+
 3.	Disassemble the **SÄRDAL LED light chain** units. Use a Philips screwdriver to remove the screws from the top and bottom of the battery case. The LED strand connects to a circuit board inside the battery case, make note of which wires are connected to the battery's positive (`+`) and negative (`-`) terminals. 
 
-4.	*Optional:* To protect the cirsuit, solder a small resistor (in my measurements, the existing battery pack includes a 2.5 Ohm resistor) to each strand's positive (`+`) wire. I grabbed some 47 Ohm resistors I had lying around to use for this. 
+	![Battery Terminals](images/figure-04.png)
+
+4.	*Optional:* To protect the circuit, solder a small resistor (in my measurements, the existing battery pack includes a 2.5 Ohm resistor) to each strand's positive (`+`) wire. I grabbed some 47 Ohm resistors I had lying around to use for this. 
 	
 	> **Note:** To protect the circuit from shorting out, I added some shrink tubing over the soldered connection and resistor.  
+
+	![Adding Resistors](images/figure-05.png)
 	
 5.	Solder the wires from the LED strands to the appropriate pins on the **Arduino Pro Trinket 3V**.
 
@@ -44,9 +54,17 @@ Basically, all you need is an Arduino, battery, glass vessel and some battery-po
 
 	![Adafruit Pro Trinket Pinouts](https://cdn-learn.adafruit.com/assets/assets/000/025/646/medium800/adafruit_products_pro5.png?1432753967)
 
+	![Completed Assembly](images/figure-06.png)
+
 6.	Plug the **Lithium Ion Polymer Battery** to the Adafruit Pro Trinket LiIon/LiPoly Backpack Add-On.
 
-That's it, you're all connected. Connect the Trinket to your PC using a USB cable and download the project's compiled code into the device. You can find complete directions on how to setup your development environment and deploy compiled code to the Trinket in the [Trinket tutorial](https://learn.adafruit.com/introducing-pro-trinket/overview). The project's code is located in the `twinkle_lights.ino` file.
+	![Completed Project](images/figure-07.png)
+
+7.	Connect the Trinket to your PC using a USB cable and **download the project's compiled code** into the device. The project's code is located in the repository's `twinkle_lights.ino` file. You can find complete directions on how to setup your development environment and deploy compiled code to the Trinket in the [Trinket tutorial](https://learn.adafruit.com/introducing-pro-trinket/overview). 
+	
+8.	**Stuff the whole contraption into the jar** and turn it on. You're done!
+
+	![Finished Project](images/figure-01.png)
 
 ## Application Code
 
@@ -109,6 +127,8 @@ With the LED strands properly initialized, the `loop` function cycles one strand
 	  delay(1000);
 	}
 
+
+Could I have written this code more efficiently? Yes, absolutely. I thought about having one `for` loop, and just switching the `pin` designators between each iteration. I figured that the code to do the flip wasn't any more efficient than just doing everything in two loops.
 
 ***
 
