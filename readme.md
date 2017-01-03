@@ -89,46 +89,50 @@ The applicaton uses several loops to control fading the LEDs. Rather than type t
 The `setup` function is where the Arduino sketch initializes its hardware and software parameters. For this project, we don't have to do much; since the LED strands alternate between fading up and down, we want to fade one of the strands to maximum brightness before we start repeating the process. So, in the `setup` function, the code simply fades the second strand (the one connected to `pin1`) up to max.
 
 	void setup() {
+	  //Initialize the up and down pin designators
+	  upPin = pin1;
+	  downPin = pin0;
+	
 	  //The setup function initializes the application
 	  //In this case, we'll just start by winding strand 1 up to
 	  //full illumination
 	  for (int i = 0; i <= maxAnalog; i++) {
 	    //Write the voltage value
-	    analogWrite(pin1, i);
+	    analogWrite(upPin, i);
 	    //Pause for a little while
 	    delay(delayVal);
 	  }
-	  //Wait a second before continuing 
+	  //Wait a second before continuing
 	  delay(1000);
 	}
 
-With the LED strands properly initialized, the `loop` function cycles one strand up to maximum power while cycling the other down to off. This process repeats until power is removed from the microcontroller. I added a 1 second delay at the top of the loop so the lights seem to pause before the process repeats.
+With the LED strands properly initialized, the `loop` function cycles one strand up to maximum power while cycling the other down to off. This process repeats until power is removed from the microcontroller.
 
 	void loop() {
-	  //Strand 0 up, strand 1 down
+	  //Variable to keep track of one of the pin assignments
+	  //as we swap them
+	  int tmp;
+	  //Hold on to the current upPin value
+	  tmp = upPin;
+	  //set upPin to the downPin value
+	  upPin = downPin;
+	  //Then set downPin to what used to be in upPin
+	  downPin = tmp;
+	
+	  //Look through the voltage output values (from 0 to 255)
+	  //increment by 1
 	  for (int i = 0; i <= maxAnalog; i++) {
-	    //Write the voltage values
-	    analogWrite(pin0, i);
-	    analogWrite(pin1, maxAnalog - i);
+	    //Drive the upPin up to maxAnalog
+	    analogWrite(upPin, i);
+	    //While simultaneously driving downPin down to 0
+	    analogWrite(downPin, maxAnalog - i);
 	    //Pause for a little while
 	    delay(delayVal);
 	  }
-	  //Wait a second before continuing 
-	  delay(1000);
-	  //Strand 1 up, strand 0 down
-	  for (int i = 0; i <= maxAnalog; i++) {
-	    //Write the voltage values
-	    analogWrite(pin0, maxAnalog - i);
-	    analogWrite(pin1, i);
-	    //Pause for a little while
-	    delay(delayVal);
-	  }
-	  //Wait a second before continuing 
+	  //Wait a second before continuing
 	  delay(1000);
 	}
 
-
-Could I have written this code more efficiently? Yes, absolutely. I thought about having one `for` loop, and just switching the `pin` designators between each iteration. I figured that the code to do the flip wasn't any more efficient than just doing everything in two loops.
 
 ***
 
