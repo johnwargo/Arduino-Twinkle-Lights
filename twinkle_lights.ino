@@ -8,12 +8,13 @@
     (https://learn.pimoroni.com/tutorial/sandyj/firefly-light) project.
  ************************************************************************/
 
-//Analog ouput pin assignments
+//Analog output pin assignments
 const int pin0 = 9;
 const int pin1 = 10;
 //Specifies how long the application delays between changes to output voltage
 const int delayVal = 10;  //in milliseconds
-//Constant representing max analog output
+
+//Constant representing max analog output, don't change this value.
 const int maxAnalog = 255;
 
 //Used to track which pin is going up and which down
