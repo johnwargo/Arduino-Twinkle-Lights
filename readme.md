@@ -1,5 +1,4 @@
-Arduino Twinkle Lights in a Jar
-===============================
+# Arduino Twinkle Lights in a Jar
 
 ## Introduction
 
@@ -29,7 +28,7 @@ As the lights fade up and down, the application uses the `delayVal` value to spe
 	//Specifies how long the application delays between changes to output voltage
 	const int delayVal = 20;  //in milliseconds
 
-The applicaton uses several loops to control fading the LEDs. Rather than type the max loop counter in each loop, I defined a constant to use. Don't change this value, there's no need to that I can think of - I just used this to keep from having a number (255) repeated throughout the code.
+The application uses several loops to control fading the LEDs. Rather than type the max loop counter in each loop, I defined a constant to use. Don't change this value, there's no need to that I can think of - I just used this to keep from having a number (255) repeated throughout the code.
 	
 	//Constant representing max analog output
 	const int maxAnalog = 255;
