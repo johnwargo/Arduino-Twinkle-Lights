@@ -10,6 +10,12 @@ When I discovered the project, I thought it was really cool, but they threw a lo
 
 Here’s a video of the [white twinkle lights](https://vimeo.com/193441242) in action, and here’s a [Christmas version](https://vimeo.com/198351699) that uses Red and Green LEDs. There's even a 4th of July version that uses three light strands, you can read more about that version at [Arduino Twinkle Lights Array](https://github.com/johnwargo/Arduino-Twinkle-Lights-Array). 
 
+<iframe src="https://player.vimeo.com/video/198351699" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/198351699">Arduino Twinkle Lights (Red and Green)</a> from <a href="https://vimeo.com/user39135142">John Wargo</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+
+<iframe src="https://player.vimeo.com/video/193441242" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/193441242">Arduino Twinkle Lights</a> from <a href="https://vimeo.com/user39135142">John Wargo</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+
 ## Hardware Components
 
 The project (as I've implemented it) uses the following required hardware:
