@@ -43,7 +43,7 @@ The application code starts with a few constant definitions:
 
 Use the `pin0` and `pin1` constants to tell the application which analog write pins the LED strand's positive wires are connected. For my implementation, I connected them to pins 9 and 10. If you use different pins, change the values in the following constants:
     
-	//Analog ouput pin assignments
+	//Analog output pin assignments
 	const int pin0 = 9;
 	const int pin1 = 10;
 	
