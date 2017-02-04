@@ -2,16 +2,40 @@
 
 ## Introduction
 
-This project is an Arduino variant of the [Pimoroni Firefly Light](https://learn.pimoroni.com/tutorial/sandyj/firefly-light) project. I thought the project was cool, but they threw an awful lot of hardware into the solution, so I wanted to see if I could build something with less parts and for less money.
+This project is an Arduino variant of the Pimoroni Firefly Light (https://learn.pimoroni.com/tutorial/sandyj/firefly-light) project. Basically you place two strings of battery-powered LEDs into a glass jar and use a microcontroller to fade one strand up while the other strand fades down. The fade up/down process repeats for as long as the microcontroller has power. You could even add 1 or more strands of lights to the project if you want.
 
-Basically you place two strings of battery-powered LEDs into a glass jar and use an Arduino to fade one strand on while the other strand fades to off. This process repeats for as long as the Arduino has power.
-
+When I discovered the project, I thought it was really cool, but they threw a lot of hardware (a Raspberry Pi, two HATS and a battery) into the solution, so I wanted to see if I could build something with less parts and for less money. This version of project uses an Arduino compatible board (you could use most any Arduino for this project), a battery module and a battery. Complete assembly instructions are available at [Arduino Twinkle Lights at johnwargo.com](http://johnwargo.com/microcontrollers-single-board-computers/arduino-twinkle-lights.html). 
+ 
 ![Finished Project](images/figure-01.png)
 
 Here's a video of the project in action:
 
 <iframe src="https://player.vimeo.com/video/193441242" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-<p><a href="https://vimeo.com/193441242">Arduino Twinkle Lights</a> from <a href="https://vimeo.com/user39135142">John Wargo</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+
+## Hardware Components
+
+The project (as I've implemented it) uses the following required hardware:
+
++	[Adafruit Pro Trinket - 3V 12MHz](https://www.adafruit.com/products/2010)
++	[Adafruit Pro Trinket LiIon/LiPoly Backpack Add-On](https://www.adafruit.com/products/2124)
++	[Lithium Ion Polymer Battery - 3.7v 500mAh](https://www.adafruit.com/products/1578)
++	Toggle switch; all you need is a SPST switch, but I used a SPDT switch I had lying around. 
++	A couple inches of 22 or 24 ga stranded wire.
+
+If you chose to use a different microcontroller, you can replace the Adafruit Pro Trinket LiIon/LiPoly Backpack Add-On, which is purpose built for the Adafruit Pro Trinket, with the [USB LiIon/LiPoly charger - v1.2](https://www.adafruit.com/products/259).
+
+For the white LED version, I used the following hardware:
+
++	[Ikea ENSIDIG Glass Jar](http://www.ikea.com/us/en/catalog/products/10239888)
++	2 [Ikea SÄRDAL LED light chain with 12 lights](http://www.ikea.com/us/en/catalog/products/60277514)
+
+For the Christmas version, I used the following hardware:
+
++	Small Mason jar
++	[Wire Light LED Strand - 12 Green LEDs + Coin Cell Holder](https://www.adafruit.com/products/896)
++	[Wire Light LED Strand - 12 Red LEDs + Coin Cell Holder](https://www.adafruit.com/products/897)
+
+The LED strand is smaller for the Christmas version, so I used a smaller jar. A benefit of the mason jar is that you can mount the hardware to the underside of the lid, which makes it easier to turn on/off and charge.
 
 ## Application Code
 
