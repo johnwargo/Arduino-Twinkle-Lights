@@ -8,9 +8,7 @@ When I discovered the project, I thought it was really cool, but they threw a lo
  
 ![Finished Project](images/figure-01.png)
 
-Here's a video of the project in action:
-
-<iframe src="https://player.vimeo.com/video/193441242" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+Here’s a video of the [white twinkle lights](https://vimeo.com/193441242) in action, and here’s a [Christmas version](https://vimeo.com/198351699) that uses Red and Green LEDs. There's even a 4th of July version that uses three light strands, you can read more about that version at [Arduino Twinkle Lights Array](https://github.com/johnwargo/Arduino-Twinkle-Lights-Array). 
 
 ## Hardware Components
 
